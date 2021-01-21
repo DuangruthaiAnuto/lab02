@@ -1,8 +1,17 @@
 <template>
   <div id="app">
+    {{counter}}<br />
+    <button v-on:click="counter=counter+1">Click+1</button>
+    <!-- v-on:click = @click -->
+    <button @click="clicked">Click+2</button>
+
+    <hr />
+    <!-- เส้น -->
     <h1>{{ message }}</h1>
     <br />
     <span v-text="message"></span>
+    <br />
+    <input type="text" v-model="message" />
 
     <hr />
     <!-- เส้น -->
@@ -28,6 +37,17 @@
     <!-- เส้น -->
     <img v-bind:src="require('@/assets/' + pic + '.png')" width="150px" />
 
+    <hr />
+    <!-- เส้น -->
+    <select v-model="message">
+      <option value="cake">Cake</option>
+      <option value="candy">Candy</option>
+      <option value="tea">Tea</option>
+    </select>
+
+    <hr />
+    <!-- เส้น -->
+    <textarea v-model="message"></textarea>
 
   </div>
 </template>
@@ -38,6 +58,7 @@ export default {
   components: {},
   data() {
     return {
+      counter:0,
       pic:"logo",
       urlSKRU:"http://www.skru.ac.th",
       message: "Hello!!",
@@ -47,6 +68,11 @@ export default {
         { "id": 2, "name": "Rianny", "Salary": 13000 },
         { "id": 3, "name": "Plammy", "Salary": 22000 }
       ],
+    }
+  },
+  methods:{
+    clicked: function(){
+      this.counter=this.counter+2;
     }
   },
 }
